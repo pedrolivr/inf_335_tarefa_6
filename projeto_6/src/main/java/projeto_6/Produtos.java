@@ -18,11 +18,9 @@ public class Produtos {
 		for(Document col : collections) {
 			System.out.println(col.get("name"));
 			cdb.client.close();
-
 	}
 
 }
-	
 	
 	static void listaItens(MongoDatabase mdb, ConectaDb cdb) {
 		
@@ -31,13 +29,15 @@ public class Produtos {
 		 Iterable <Document> produtos = collections.find();
 		 
 			for(Document produto : produtos) {	
-				String fnome = produto.getString("first_name");
-				String lnome = produto.getString("last_name");
-				String phone = produto.getString("phone_number");
-				System.out.println("Alunos"+" "+ fnome+ " - "+lnome+" - " +phone);
+				String fnome = produto.getString("name");
+				String type= produto.getString("type");
+				String price = produto.getString("price");
+				System.out.println("Alunos"+" "+ fnome+ " - "+type+" - " +price);
 				
 				cdb.client.close();
 		
 			}
 	}
+	
+
 }

@@ -12,17 +12,12 @@ import com.mongodb.client.model.Updates;
 
 public class NovoProduto {
 	
-	
-	
 	String name;
 	String type;
 	String price;
-	
-	
-	
+		
 		public  Document novoProduto(String name, String type, String price ){
-			
-			
+					
 			this.name = name;
 			this.type = type;
 			this.price = price;
@@ -32,18 +27,12 @@ public class NovoProduto {
 			naluno.append("name", name);
 			naluno.append("type", type);
 			naluno.append("price", price);
-			
-			
-			
+
 			return naluno;
-			
-			
 
 		}
 		
 		public static void addProduto(ConectaDb cdb, Document dtco){
-			
-			
 					
 			MongoClient client = MongoClients.create(cdb.getUrl());			
 			MongoDatabase db = client.getDatabase(cdb.getdatabase());
@@ -55,8 +44,7 @@ public class NovoProduto {
 		}
 		
 		public static void removeProduto(ConectaDb cdb, String fn) {
-			
-			
+					
 			MongoClient client = MongoClients.create(cdb.getUrl());			
 			MongoDatabase db = client.getDatabase(cdb.getdatabase());
 			MongoCollection<Document> collection = db.getCollection(cdb.getColecao());	
@@ -65,8 +53,7 @@ public class NovoProduto {
 		}
 			
 		public static void removeProdutos(ConectaDb cdb, String fn) {
-			
-			
+						
 			MongoClient client = MongoClients.create(cdb.getUrl());			
 			MongoDatabase db = client.getDatabase(cdb.getdatabase());
 			MongoCollection<Document> collection = db.getCollection(cdb.getColecao());	
@@ -80,8 +67,6 @@ public class NovoProduto {
 			MongoDatabase db = client.getDatabase(cdb.getdatabase());
 			MongoCollection<Document> collection = db.getCollection(cdb.getColecao());
 			
-			
-
 			collection.updateOne(Filters.eq("name", fn), Updates.set("name", sr));
 			cdb.client.close();
 	
@@ -93,8 +78,6 @@ public class NovoProduto {
 			MongoDatabase db = client.getDatabase(cdb.getdatabase());
 			MongoCollection<Document> collection = db.getCollection(cdb.getColecao());
 			
-			
-
 			collection.updateOne(Filters.eq("name", name), Updates.set("type", sr));
 			cdb.client.close();
 	
@@ -106,11 +89,9 @@ public class NovoProduto {
 			MongoDatabase db = client.getDatabase(cdb.getdatabase());
 			MongoCollection<Document> collection = db.getCollection(cdb.getColecao());	
 			
-
 			collection.updateOne(Filters.eq("name", name), Updates.set("price", price));
 			cdb.client.close();
 			
-	
 		}
 		
 		public String getName() {
